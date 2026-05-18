@@ -56,6 +56,18 @@
 
 </nav>
 
+<div class="sort-toolbar">
+    <label for="sortSelect">Sort by:</label>
+    <select id="sortSelect" onchange="handleSortChange(event)">
+        <option value="scoreHigh">Score (high))</option>
+        <option value="scoreLow">Score (low)</option>
+        <option value="artist">Artist</option>
+        <option value="genre">Genres</option>
+        <option value="reviews">Reviews</option>
+        <option value="comments">Comments</option>
+    </select>
+</div>
+
 <!-- PAGE HERO / INTRO -->
 <section class="flex-container">
     <div class="text-container">
@@ -63,6 +75,12 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed asperiores inventore ratione suscipit, tenetur eos modi similique unde perferendis.</p>
     </div>
 </section>
+<script>
+function handleSortChange(event) {
+    const value = event.target.value;
+    console.log('Sort by:', value);
+}
+</script>
 <script src="account.js"></script>
 </body>
 </html>

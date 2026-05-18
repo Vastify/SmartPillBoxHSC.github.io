@@ -211,36 +211,110 @@ body{
     cursor:pointer;
 }
 
-.albums-section {
-  padding: 40px;
-  text-align: center;
+.album-search-section {
+    width:84%;
+    margin:18px auto 0;
+    background:#f6f2ec;
+    border-radius:22px;
+    padding:28px;
+}
+
+.album-search-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    margin-bottom:22px;
+}
+
+.album-search-header h2{
+    color:#222;
+    font-size:28px;
+}
+
+.album-search-header p{
+    color:#555;
+    margin-top:6px;
+}
+
+.album-search-form{
+    display:flex;
+    min-width:280px;
+    max-width:420px;
+    flex:1;
+}
+
+.album-search-form input{
+    flex:1;
+    min-width:0;
+    padding:12px 16px;
+    border:2px solid #222;
+    border-radius:24px 0 0 24px;
+    outline:none;
+}
+
+.album-search-form button{
+    width:52px;
+    border:2px solid #222;
+    border-left:none;
+    background:white;
+    border-radius:0 24px 24px 0;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.album-status{
+    min-height:20px;
+    color:#555;
+    text-align:center;
 }
 
 .albums-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:30px;
+    margin-top:20px;
 }
 
 .album-card {
-  background: #111;
-  padding: 15px;
-  border-radius: 12px;
-  color: white;
+    color:#111;
+    text-align:center;
 }
 
 .album-art {
-  width: 100%;
-  border-radius: 10px;
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:3px;
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
 }
 
-.album-card button {
-  margin-top: 10px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  background: #1db954;
-  color: white;
-  cursor: pointer;
+.album-card h3{
+    font-size:20px;
+    line-height:1.2;
+    margin-top:12px;
+}
+
+.album-artist{
+    font-size:18px;
+    line-height:1.25;
+    margin-top:6px;
+}
+
+.album-genre{
+    color:#333;
+    font-size:16px;
+    margin-top:4px;
+}
+
+@media (max-width: 760px){
+    .album-search-header{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .album-search-form{
+        max-width:none;
+        min-width:0;
+    }
 }

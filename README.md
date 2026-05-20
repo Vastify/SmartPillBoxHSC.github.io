@@ -1,4 +1,5 @@
 # Rate-my-Rythem
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/da38957d-9596-4ae3-8c72-2c1fbd54a897" />
 
 ### Project overview
 

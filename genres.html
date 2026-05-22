@@ -8,124 +8,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4c4e9f3b3f.js" crossorigin="anonymous"></script>
-  <style>
-    :root {
-      --cream: #f5ede0;
-      --dark: #1a1208;
-      --red: #c8371a;
-      --orange: #e05c1a;
-      --tan: #d4c4a8;
-      --warm-white: #faf6ef;
-      --groove: #2a1f10;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background: var(--cream);
-      color: var(--dark);
-      font-family: 'IBM Plex Mono', monospace;
-      background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,.04) 39px, rgba(0,0,0,.04) 40px);
-    }
-
-    /* Reuse shared nav/header styles */
-    .top-header {
-      width: 92%; max-width: 1400px; margin: 28px auto 0;
-      background: var(--dark); border-radius: 4px; padding: 18px 32px;
-      display: flex; align-items: center; justify-content: space-between; gap: 20px;
-      border: 3px solid var(--dark); box-shadow: 6px 6px 0 var(--red);
-    }
-    .logo { display:flex; align-items:center; gap:14px; flex-shrink:0; text-decoration:none; }
-    .logo img { width:56px; height:56px; border-radius:50%; border:3px solid var(--red); object-fit:cover; }
-    .logo-text .small { display:block; color:var(--red); font-size:11px; letter-spacing:4px; font-weight:600; }
-    .logo-text .big { font-family:'Bebas Neue',sans-serif; font-size:34px; color:var(--cream); letter-spacing:2px; }
-    .search-container { flex:1; max-width:520px; }
-    .search-container form { display:flex; }
-    .search-container input { flex:1; padding:12px 18px; border:2px solid var(--tan); border-right:none; background:var(--groove); color:var(--cream); font-family:'IBM Plex Mono',monospace; font-size:13px; outline:none; }
-    .search-container input::placeholder { color:#888; }
-    .search-container button { padding:0 20px; border:2px solid var(--tan); background:var(--red); color:white; cursor:pointer; font-size:15px; }
-    #accountBtn { width:54px; height:54px; border-radius:50%; overflow:hidden; cursor:pointer; border:3px solid var(--red); flex-shrink:0; display:flex; align-items:center; justify-content:center; background:var(--groove); color:var(--cream); font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; }
-    #accountBtn img { width:100%; height:100%; object-fit:cover; }
-    .nav-bar { width:92%; max-width:1400px; margin:14px auto 0; background:var(--groove); border:2px solid var(--dark); border-radius:2px; display:flex; align-items:center; justify-content:center; padding:0 24px; min-height:54px; }
-    .menu { list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:center; }
-    .menu li a { color:var(--tan); text-decoration:none; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:8px 16px; display:block; transition:color .15s; }
-    .menu li a:hover { color:white; }
-    .menu .sep { color:#555; font-size:18px; user-select:none; padding:0 4px; }
-    .menu .highlight-item { background:var(--red); border-radius:2px; margin:0 8px; }
-    .menu .highlight-item a { color:white!important; font-family:'Playfair Display',serif; font-style:italic; font-size:13px; letter-spacing:0.5px; text-transform:none; }
-
-    /* PAGE CONTENT */
-    .page-header {
-      width: 92%; max-width: 1400px; margin: 28px auto 0;
-      border-bottom: 3px solid var(--dark); padding-bottom: 18px;
-      display: flex; align-items: baseline; gap: 16px;
-    }
-    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 4px; line-height: 1; }
-    .page-header .tagline { font-size: 13px; color: #888; font-style: italic; }
-
-    .genres-grid {
-      width: 92%; max-width: 1400px; margin: 28px auto;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 18px;
-    }
-
-    .genre-card {
-      background: var(--warm-white);
-      border: 2px solid var(--dark);
-      border-radius: 3px;
-      padding: 28px 20px 22px;
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--dark);
-      display: block;
-      position: relative;
-      overflow: hidden;
-      transition: transform .15s, box-shadow .15s;
-    }
-
-    .genre-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 5px;
-      background: var(--color, var(--red));
-    }
-
-    .genre-card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 4px 4px 0 var(--dark);
-    }
-
-    .genre-card .icon {
-      font-size: 32px;
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .genre-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      letter-spacing: 2px;
-      line-height: 1;
-    }
-
-    .genre-card p {
-      font-size: 11px;
-      color: #888;
-      margin-top: 6px;
-    }
-
-    .footer-strip {
-      width: 92%; max-width: 1400px; margin: 32px auto;
-      border-top: 2px solid var(--dark); padding-top: 18px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 11px; color: #888;
-    }
-    .footer-strip strong { color:var(--dark); font-family:'Bebas Neue',sans-serif; letter-spacing:1px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="vinyl-deco"></div>
 
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <h3>Sign In</h3>
+    <p id="modalSubtitle">Your personal record collection awaits.</p>
+    <p id="modalMsg"></p>
+    <input type="text" id="modalUsername" placeholder="Username">
+    <input type="password" id="modalPassword" placeholder="Password">
+    <div class="modal-actions">
+      <button class="modal-btn-primary" onclick="modalLogin()">Login</button>
+      <button class="modal-btn-secondary" onclick="closeModal()">Cancel</button>
+    </div>
+    <div class="divider" style="margin-top:14px;">or</div>
+    <button class="btn-secondary" style="margin-top:0;" onclick="modalSignup()">Create Account</button>
+  </div>
+</div>
+
+<!-- HEADER -->
 <header class="top-header">
   <a class="logo" href="index.html">
     <img src="logo.jpg" alt="Rate My Rhythm Logo">
@@ -135,16 +40,17 @@
     </div>
   </a>
   <div class="search-container">
-    <form action="/search-results" method="GET">
+    <form action="index.html" method="GET">
       <input type="search" name="q" placeholder="Search artists, albums, tracks…">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
-  <div id="accountBtn">
+  <div id="accountBtn" onclick="handleAccountClick()">
     <img src="cover-art/signin.jpg" alt="Account" id="accountIconImg">
   </div>
 </header>
 
+<!-- NAV -->
 <nav class="nav-bar" aria-label="Main navigation">
   <ul class="menu">
     <li><a href="index.html">Home</a></li>
@@ -155,28 +61,41 @@
     <li class="highlight-item"><a href="#">Music Reviews — For the Fans, By the Fans</a></li>
     <li><a href="top_rated.html">Top Rated</a></li>
     <li><span class="sep">·</span></li>
-    <li><a href="submit_comment.html">Submit Review</a></li>
+    <li><a href="submit_review.html">Submit Review</a></li>
     <li><span class="sep">·</span></li>
     <li><a href="about.html">About</a></li>
   </ul>
 </nav>
 
-<div class="page-header">
-  <h1>Genres</h1>
-  <span class="tagline">Browse music by category</span>
+<!-- GENRE LIST VIEW -->
+<div id="genreListView">
+  <div class="page-header">
+    <h1>Genres</h1>
+    <span class="tagline">Browse music by category</span>
+  </div>
+  <div class="genres-grid">
+    <div class="genre-card" style="--accent-color:#c8371a" onclick="showGenre('Rock','🎸','Classic, indie, alternative & more')"><span class="icon">🎸</span><h3>Rock</h3><p>Classic, indie, alternative & more</p></div>
+    <div class="genre-card" style="--accent-color:#1a4fc8" onclick="showGenre('Hip-Hop','🎵','Rap, trap, boom bap & beyond')"><span class="icon">🎵</span><h3>Hip-Hop</h3><p>Rap, trap, boom bap & beyond</p></div>
+    <div class="genre-card" style="--accent-color:#c87a1a" onclick="showGenre('Jazz','🎷','Swing, bebop, fusion & more')"><span class="icon">🎷</span><h3>Jazz</h3><p>Swing, bebop, fusion & more</p></div>
+    <div class="genre-card" style="--accent-color:#1ac864" onclick="showGenre('R&B/Soul','🎹','Neo soul, funk, gospel vibes')"><span class="icon">🎹</span><h3>R&amp;B / Soul</h3><p>Neo soul, funk, gospel vibes</p></div>
+    <div class="genre-card" style="--accent-color:#8a1ac8" onclick="showGenre('Electronic','🎧','House, techno, drum & bass')"><span class="icon">🎧</span><h3>Electronic</h3><p>House, techno, drum & bass</p></div>
+    <div class="genre-card" style="--accent-color:#c8b11a" onclick="showGenre('Pop','🎺','Chart-topping hits & anthems')"><span class="icon">🎺</span><h3>Pop</h3><p>Chart-topping hits & anthems</p></div>
+    <div class="genre-card" style="--accent-color:#c81a6e" onclick="showGenre('Metal','🥁','Heavy, death, doom & thrash')"><span class="icon">🥁</span><h3>Metal</h3><p>Heavy, death, doom & thrash</p></div>
+    <div class="genre-card" style="--accent-color:#1ac8c8" onclick="showGenre('Classical','🎻','Orchestral, chamber & opera')"><span class="icon">🎻</span><h3>Classical</h3><p>Orchestral, chamber & opera</p></div>
+    <div class="genre-card" style="--accent-color:#c86d1a" onclick="showGenre('Country','🤠','Country, Americana, bluegrass')"><span class="icon">🤠</span><h3>Country</h3><p>Country, Americana, bluegrass</p></div>
+    <div class="genre-card" style="--accent-color:#3ac81a" onclick="showGenre('World','🌍','Afrobeat, Latin, reggae & more')"><span class="icon">🌍</span><h3>World</h3><p>Afrobeat, Latin, reggae & more</p></div>
+  </div>
 </div>
 
-<div class="genres-grid">
-  <a class="genre-card" href="#" style="--color:#c8371a"><span class="icon">🎸</span><h3>Rock</h3><p>Classic, indie, alternative & more</p></a>
-  <a class="genre-card" href="#" style="--color:#1a4fc8"><span class="icon">🎵</span><h3>Hip-Hop</h3><p>Rap, trap, boom bap & beyond</p></a>
-  <a class="genre-card" href="#" style="--color:#c87a1a"><span class="icon">🎷</span><h3>Jazz</h3><p>Swing, bebop, fusion & more</p></a>
-  <a class="genre-card" href="#" style="--color:#1ac864"><span class="icon">🎹</span><h3>R&amp;B / Soul</h3><p>Neo soul, funk, gospel vibes</p></a>
-  <a class="genre-card" href="#" style="--color:#8a1ac8"><span class="icon">🎧</span><h3>Electronic</h3><p>House, techno, drum &amp; bass</p></a>
-  <a class="genre-card" href="#" style="--color:#c8b11a"><span class="icon">🎺</span><h3>Pop</h3><p>Chart-topping hits &amp; anthems</p></a>
-  <a class="genre-card" href="#" style="--color:#c81a6e"><span class="icon">🥁</span><h3>Metal</h3><p>Heavy, death, doom &amp; thrash</p></a>
-  <a class="genre-card" href="#" style="--color:#1ac8c8"><span class="icon">🎻</span><h3>Classical</h3><p>Orchestral, chamber &amp; opera</p></a>
-  <a class="genre-card" href="#" style="--color:#c86d1a"><span class="icon">🤠</span><h3>Country</h3><p>Country, Americana, bluegrass</p></a>
-  <a class="genre-card" href="#" style="--color:#3ac81a"><span class="icon">🌍</span><h3>World</h3><p>Afrobeat, Latin, reggae &amp; more</p></a>
+<!-- GENRE DETAIL VIEW -->
+<div id="genreDetailView" class="genre-detail" style="display:none;">
+  <button class="genre-back" onclick="backToGenreList()"><i class="fa fa-arrow-left"></i> All Genres</button>
+  <div class="genre-header">
+    <h2 id="genreDetailTitle"></h2>
+    <p id="genreDetailSub"></p>
+  </div>
+  <p id="genreStatus" class="album-status">Loading albums…</p>
+  <div id="genreAlbumsGrid" class="albums-grid"></div>
 </div>
 
 <footer class="footer-strip">
@@ -184,6 +103,10 @@
   <span>Music Reviews For the Fans, By the Fans &nbsp;·&nbsp; © 2025</span>
 </footer>
 
-<script src="account.js"></script>
+<script src="app.js"></script>
+<script>
+  document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  updateAccountIcon();
+</script>
 </body>
 </html>

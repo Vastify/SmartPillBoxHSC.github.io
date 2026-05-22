@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About — Rate My Rhythm</title>
+  <title>Submit Review — Rate My Rhythm</title>
   <link rel="icon" type="image/jpg" href="cover-art/favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -67,45 +67,29 @@
   </ul>
 </nav>
 
-<div class="about-wrap">
-  <div class="about-hero">
-    <h1>About <span>Rate</span> My Rhythm</h1>
-    <p>
-      Rate My Rhythm is a fan-driven music catalogue and review platform. Browse thousands of albums,
-      listen to previews, rate records, and share your thoughts with a community that lives and breathes music.
-      Built as a Progressive Web App — fast, installable, and available offline.
-    </p>
+<div class="review-wrap">
+  <div id="reviewLockNotice" class="lock-notice" style="display:none;">
+    <div class="lock-icon">🔒</div>
+    <p>You need to be signed in to submit a review.<br>Join the community to share your thoughts on any album.</p>
+    <button onclick="openModal()">Sign In / Create Account</button>
   </div>
-
-  <div class="section-card">
-    <h2>What We Do</h2>
-    <ul>
-      <li>Browse &amp; search albums by artist, genre, or rating</li>
-      <li>Listen to 30-second track previews via the iTunes API</li>
-      <li>Create a personal account and save your favourites</li>
-      <li>Submit reviews and comments on any album</li>
-      <li>Install the app on any device (PWA)</li>
-    </ul>
-  </div>
-
-  <div class="section-card">
-    <h2>Tech Stack</h2>
-    <ul>
-      <li>HTML5, CSS3, Vanilla JavaScript (front-end)</li>
-      <li>iTunes Search API for live album &amp; track data</li>
-      <li>SQL database for users, reviews &amp; saved items</li>
-      <li>Service Worker + Web Manifest for PWA features</li>
-      <li>Offline caching with background sync</li>
-    </ul>
-  </div>
-
-  <div class="section-card">
-    <h2>Accessibility</h2>
-    <p>
-      Rate My Rhythm is built with accessibility in mind — semantic HTML, ARIA roles and labels,
-      keyboard-navigable interfaces, sufficient colour contrast, and screen-reader-friendly live regions.
-      We aim to make music discovery available to everyone.
-    </p>
+  <div class="review-card">
+    <h2>Submit a Review</h2>
+    <p class="sub">Share your thoughts with the Rate My Rhythm community.</p>
+    <div class="field-group" id="reviewFormFields">
+      <input type="text" id="reviewAlbum" placeholder="Album name">
+      <input type="text" id="reviewArtist" placeholder="Artist name">
+      <select id="reviewGenre">
+        <option value="">Select genre…</option>
+        <option>Hip-Hop</option><option>Pop</option><option>R&amp;B/Soul</option>
+        <option>Rock</option><option>Jazz</option><option>Electronic</option>
+        <option>Metal</option><option>Classical</option><option>Country</option><option>World</option>
+      </select>
+      <input type="number" id="reviewScore" placeholder="Score (1–10)" min="1" max="10">
+      <textarea id="reviewBody" placeholder="Write your review…"></textarea>
+      <button class="btn-primary" onclick="submitReview()">Submit Review</button>
+    </div>
+    <p id="reviewMsg" style="text-align:center;color:var(--red);font-weight:600;font-size:12px;margin-top:10px;min-height:18px;"></p>
   </div>
 </div>
 
@@ -118,6 +102,11 @@
 <script>
   document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
   updateAccountIcon();
+  updateReviewForm();
+
+  // Re-check after login
+  const _origClose = closeModal;
+  window.closeModal = function() { _origClose(); updateReviewForm(); };
 </script>
 </body>
 </html>

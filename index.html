@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4c4e9f3b3f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1DB954">
 </head>
 <body>
 <div class="vinyl-deco"></div>
@@ -130,6 +132,15 @@
   });
   updateAccountIcon();
   searchAlbums('');
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js")
+    .then(() => {
+      console.log("Service Worker registered");
+    })
+    .catch((err) => {
+      console.log("Service Worker failed:", err);
+    });
+  }
 </script>
 </body>
 </html>

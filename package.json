@@ -1,0 +1,23 @@
+{
+  "name": "yt-pwa-tutorial",
+  "version": "1.0.0",
+  "description": "This project is a Progressive Web App catalogue platform built using HTML, CSS, JavaScript and a SQL database. The goal is to create a fast, installable web application that feels like a mobile app while running entirely in the browser. The application allows users to browse, search, filter and store items in a structured catalogue, create personal accounts, and contribute their own entries and reviews.",
+  "homepage": "https://github.com/Vastify/Rate-my-Rythem#readme",
+  "bugs": {
+    "url": "https://github.com/Vastify/Rate-my-Rythem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vastify/Rate-my-Rythem.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}

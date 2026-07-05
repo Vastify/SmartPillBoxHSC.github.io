@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artists — Rate My Rhythm</title>
+  <link rel="icon" type="image/jpg" href="cover-art/favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4c4e9f3b3f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="vinyl-deco"></div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <h3>Sign In</h3>
+    <p id="modalSubtitle">Your personal record collection awaits.</p>
+    <p id="modalMsg"></p>
+    <input type="text" id="modalUsername" placeholder="Username">
+    <input type="password" id="modalPassword" placeholder="Password">
+    <div class="modal-actions">
+      <button class="modal-btn-primary" onclick="modalLogin()">Login</button>
+      <button class="modal-btn-secondary" onclick="closeModal()">Cancel</button>
+    </div>
+    <div class="divider" style="margin-top:14px;">or</div>
+    <button class="btn-secondary" style="margin-top:0;" onclick="modalSignup()">Create Account</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="top-header">
+  <a class="logo" href="index.html">
+    <img src="logo.jpg" alt="Rate My Rhythm Logo">
+    <div class="logo-text">
+      <span class="small">RATE MY</span>
+      <span class="big">RHYTHM</span>
+    </div>
+  </a>
+  <div class="search-container">
+    <form action="index.html" method="GET">
+      <input type="search" name="q" placeholder="Search artists, albums, tracks…">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div id="accountBtn" onclick="handleAccountClick()">
+    <img src="cover-art/signin.jpg" alt="Account" id="accountIconImg">
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar" aria-label="Main navigation">
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><span class="sep">·</span></li>
+    <li><a href="genres.html">Genres</a></li>
+    <li><span class="sep">·</span></li>
+    <li><a href="artists.html">Artists</a></li>
+    <li class="highlight-item"><a href="#">Music Reviews — For the Fans, By the Fans</a></li>
+    <li><a href="top_rated.html">Top Rated</a></li>
+    <li><span class="sep">·</span></li>
+    <li><a href="submit_review.html">Submit Review</a></li>
+    <li><span class="sep">·</span></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>Artists</h1>
+  <span class="tagline">Fan-rated artists</span>
+</div>
+
+<div class="artists-grid" id="artistsGrid"></div>
+
+<footer class="footer-strip">
+  <strong>RATE MY RHYTHM</strong>
+  <span>Music Reviews For the Fans, By the Fans &nbsp;·&nbsp; © 2025</span>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  updateAccountIcon();
+  renderArtists();
+</script>
+</body>
+</html>
